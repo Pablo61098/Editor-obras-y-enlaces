@@ -9,7 +9,7 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
   
   **Hacer fork a este repositorio**  
   **Correr:**  
-      -$ npm install  
+     > -$ npm install  
   **Para ajustar la altura del componente se recomienda insertar esta linea:**  
       parent.style.position = 'static';  
   **por la linea número 144 del archivo que se puede encontrar en:**  
