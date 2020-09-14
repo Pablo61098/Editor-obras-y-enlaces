@@ -1,36 +1,36 @@
 # Editor-obras-y-enlaces
 Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de Cuenca
 
- # Indicaciones para uso...
-  Este repositorio hace es parte del proyecto Del Museo Virtual para la Universidad de CUenca, Faultad de Artes.
-  Su implementacion debe ser como complemento del proyecto indicado: https://github.com/Victor749/PrivateFacArtes
+* Indicaciones para uso...
+  Este repositorio hace es parte del proyecto del Museo Virtual para la Universidad de Cuenca, Faultad de Artes.
+  Su implementacion debe ser como complemento del proyecto PrivateFacArtes (privado).
   
   Para el funcionamiento de este proyecto en conjunto del MuseoVirtual mencionado se sigue los siguientes pasos:
-  # Hacer fork a este repositorio
-  # Correr:
+  Hacer fork a este repositorio
+   Correr:
     -$ npm install
-  # Para ajustar la altura del componente se recomienda insertar esta linea:
+   Para ajustar la altura del componente se recomienda insertar esta linea:
     parent.style.position = 'static';
-  # por la linea número 144 del archivo que se puede encontrar en:
+   por la linea número 144 del archivo que se puede encontrar en:
     ./node_modules/react-360-web/js/ReactInstance.js
-  # Adeḿas se debe reemplazar la línea 150 de este mismo archivo por la línea:
+   Adeḿas se debe reemplazar la línea 150 de este mismo archivo por la línea:
     parent.style.height = `${window.innerHeight/(1.5)}px`;
 
   Una vez reemplazadas esta líneas, el tamaño del componente 360 de este editor sera 2/3 del tamaño total del viewport.
   
-  # Procedemos a realizar el siguiente comando:
+   Procedemos a realizar el siguiente comando:
     -$ npm run bundle
-   # Lo cual creará una serie de archivos dentro de:
+    Lo cual creará una serie de archivos dentro de:
     ./build/
-   # De estos archivos nos interesan: index.bundle.js, client.bunlde.js y index.html, Debemos renombrar estos archivos de esta manera: 
+    De estos archivos nos interesan: index.bundle.js, client.bunlde.js y index.html, Debemos renombrar estos archivos de esta manera: 
     index.bundle.js  ---->      indexEnlaces.bundle.js
     client.bundle.js ---->      clientEnlaces.bundle.js
     index.html       ---->      indexEnlaces.ejs
-   # Estos archivos renombrados se los debe colocar dentro del proyecto https://github.com/Victor749/PrivateFacArtes, de esta manera:
+    Estos archivos renombrados se los debe colocar dentro del proyecto PrivateFacArtes, de esta manera:
     indexEnlaces.bundle.js    ----> /public/javascripts/
     clientEnlaces.bundle.js   ----> /public/javascripts/
     indexEnlaces.ejs          ----> /views/
-   # Como paso final debemos reemplazar el conjunto de líneas [1-22] del archivo indexEnlaces.ejs por el siguiente conjunto de líneas.
+    Como paso final debemos reemplazar el conjunto de líneas [1-22] del archivo indexEnlaces.ejs por el siguiente conjunto de líneas.
       <html>
       <link>
         <title>manageLinks</title>
@@ -48,13 +48,4 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
 
         <%- include('navbar.ejs') %>
    
-   # Se corre el proyecto final, donde se puede visitar a este editor en la direccion /obras
-
-    
-    
-   
-    
-  
-  
-  
-  Una vez teniendo el Museo Virt
+    Se corre el proyecto final, donde se puede visitar a este editor en la direccion /obras
