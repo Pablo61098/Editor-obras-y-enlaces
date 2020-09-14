@@ -1,10 +1,10 @@
 # Editor-obras-y-enlaces  
 Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de Cuenca
 
-* Indicaciones para uso...\n
+* Indicaciones para uso...
   Este repositorio hace es parte del proyecto del Museo Virtual para la Universidad de Cuenca, Faultad de Artes.
-  Su implementacion debe ser como complemento del proyecto PrivateFacArtes (privado).
-  
+  Su implementacion debe ser como complemento del proyecto PrivateFacArtes(privado).
+ 
   Para el funcionamiento de este proyecto en conjunto del MuseoVirtual mencionado se sigue los siguientes pasos:
   
   **Hacer fork a este repositorio**  
