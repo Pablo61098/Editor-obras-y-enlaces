@@ -7,7 +7,7 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
   
   Para el funcionamiento de este proyecto en conjunto del MuseoVirtual mencionado se sigue los siguientes pasos:
   
-  **Hacer fork a este repositorio**
+  **Hacer fork a este repositorio**  
 **Correr:**
     -$ npm install
 **Para ajustar la altura del componente se recomienda insertar esta linea:**
