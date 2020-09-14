@@ -32,6 +32,7 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
       clientEnlaces.bundle.js   ----> /public/javascripts/  
       indexEnlaces.ejs          ----> /views/  
     **Como paso final debemos reemplazar el conjunto de líneas [1-22] del archivo indexEnlaces.ejs por el siguiente conjunto de líneas.**  
+    ```html
         > <html>
         > <link>
           > <title>manageLinks</title>
@@ -48,5 +49,6 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
         > <body>
 
           > <%- include('navbar.ejs') %>
-
+    ```
+    
     **Se corre el proyecto final, donde se puede visitar a este editor en la direccion /obras**  
