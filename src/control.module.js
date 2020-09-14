@@ -13,6 +13,8 @@ var btnGuardarCoordenadas = document.getElementById('btnGuardarCoordenadas');
 var btnEditar = document.getElementById('btnEditar');
 var numImagenes = 0;
 
+var todasSalas = {};
+
 var asignatura = document.getElementById('asignatura');
 var ciclo = document.getElementById('ciclo');
 var autor = document.getElementById('autor');
@@ -25,6 +27,7 @@ var dimensiones = document.getElementById('dimensiones');
 var fechaProduccion = document.getElementById('fechaProduccion');
 var tutor = document.getElementById('tutor');
 var descripcion = document.getElementById('descripcion');
+var tecnica = document.getElementById('tecnica');
 // var imagenes = document.getElementById('imagenes');
 var imagenesUpload = document.getElementById('imagenesUpload');
 var objeto3DUpload = document.getElementById('objeto3DUpload');
@@ -64,7 +67,7 @@ export default class Control extends Module{
             if(!this._rnctx){
                 return;
             }
-            console.log("PSSS");
+            // console.log("PSSS");
             this._rnctx.callFunction(this._bridgeName, 'notifyEvent', ['cambioAmbiente', information ]);
         });
         
@@ -73,14 +76,14 @@ export default class Control extends Module{
             if(!this._rnctx){
                 return;
             }
-            console.log("PSSS");
+            // console.log("PSSS");
             this._rnctx.callFunction(this._bridgeName, 'notifyEvent', ['cambioUbicacion', information ]);
         });
 
         museos.addEventListener('change', (e) => {
             museoSeleccionado = museos.options[museos.selectedIndex];
-            console.log("Heyoo: ");
-            console.log(museoSeleccionado.value);
+            // console.log("Heyoo: ");
+            // console.log(museoSeleccionado.value);
         
             this.fillSalas(museoSeleccionado.value);
 
@@ -92,9 +95,9 @@ export default class Control extends Module{
                 this.fillEnlaceLink(salaId);            
                 this.fillCoordinates();
 
-                console.log("\n\nHEYYYYYYYYYYY AQUIIIIIIIIII: ");
-                console.log(informationLinks);
-                console.log(enlaceLinks);
+                // console.log("\n\nHEYYYYYYYYYYY AQUIIIIIIIIII: ");
+                // console.log(informationLinks);
+                // console.log(enlaceLinks);
 
                 information ={};
 
@@ -103,7 +106,7 @@ export default class Control extends Module{
                 information.informationLinks = informationLinks;
                 information.enlaceLinks = enlaceLinks;
 
-                console.log(information);
+                // console.log(information);
                 this.turnOnOffInfoData(false);
                 this.turnOnOffInfoEnlaceData(false);
                 window.dispatchEvent(new Event('cambioAmbiente'));
@@ -123,9 +126,9 @@ export default class Control extends Module{
             this.fillEnlaceLink(salaId);
             this.fillCoordinates();
 
-            console.log("\n\nHEYYYYYYYYYYY AQUIIIIIIIIII: ");
-            console.log(informationLinks);
-            console.log(enlaceLinks);
+            // console.log("\n\nHEYYYYYYYYYYY AQUIIIIIIIIII: ");
+            // console.log(informationLinks);
+            // console.log(enlaceLinks);
 
             information ={};
 
@@ -134,7 +137,7 @@ export default class Control extends Module{
             information.informationLinks = informationLinks;
             information.enlaceLinks = enlaceLinks;
 
-            console.log(information);
+            // console.log(information);
             this.turnOnOffInfoData(false);
             this.turnOnOffInfoEnlaceData(false);
             window.dispatchEvent(new Event('cambioAmbiente'));
@@ -142,7 +145,7 @@ export default class Control extends Module{
         
         
         tipo.addEventListener('change', (e) => {
-            console.log(e);
+            // console.log(e);
             if(tipo.selectedIndex == 0){
                 infoButtons.hidden = false;
                 navButtons.hidden = true;
@@ -163,7 +166,7 @@ export default class Control extends Module{
             posZ = document.getElementById('ejez').value;
             
             if(tipo.selectedIndex == 0 && infoButtons.options[infoButtons.selectedIndex].value != ""){
-                console.log("info");
+                // console.log("info");
                 let idObra = infoButtons.options[infoButtons.selectedIndex].value;
                 let params = `x=${posX}&y=${posY}&z=${posZ}`;
                 let ajaxRequest = new XMLHttpRequest();
@@ -185,7 +188,7 @@ export default class Control extends Module{
                 }
                 ajaxRequest.send(params);
             }else if(tipo.selectedIndex == 1 && navButtons.options[navButtons.selectedIndex].value != ""){
-                console.log("nav");
+                // console.log("nav");
                 let idEnlace = navButtons.options[navButtons.selectedIndex].value;
                 let params = `x=${posX}&y=${posY}&z=${posZ}`;
                 let ajaxRequest = new XMLHttpRequest();
@@ -257,8 +260,8 @@ export default class Control extends Module{
             if(tipo.selectedIndex == 0){
                 params = this.getParams(0);
                 if(params){
-                    console.log(imagenesUpload.files);
-                    console.log(params);
+                    // console.log(imagenesUpload.files);
+                    // console.log(params);
                     let ajaxRequest = new XMLHttpRequest();
                     ajaxRequest.open("POST", `${link}/obras/contenido/${idObra}?_method=PUT`, false);
                     ajaxRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -322,7 +325,7 @@ export default class Control extends Module{
                 let selectedIndex = navButtons.selectedIndex;
                 params = this.getParams(1);
                 if(params){
-                    console.log(params);
+                    // console.log(params);
                     let ajaxRequest = new XMLHttpRequest();
                     ajaxRequest.open("POST", `${link}/enlaces/contenido/${idEnlace}?_method=PUT`, false);
                     ajaxRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -456,8 +459,8 @@ export default class Control extends Module{
             ajaxRequest.onreadystatechange = () => {
                 if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
                     info = JSON.parse(ajaxRequest.responseText);
-                    console.log("info: ");
-                    console.log(info);
+                    // console.log("info: ");
+                    // console.log(info);
                     if(info.idObra != null ){
                         this.fillContenidoObra(info);
                         this.turnOnOffInfoData(true);
@@ -477,8 +480,8 @@ export default class Control extends Module{
             ajaxRequest.onreadystatechange = () => {
                 if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
                     info = JSON.parse(ajaxRequest.responseText);
-                    console.log("info: ");
-                    console.log(info);
+                    // console.log("info: ");
+                    // console.log(info);
                     salasDisponible.innerHTML = '';
                     if(info.length > 0){
                         salaActiva = 0;
@@ -535,7 +538,7 @@ export default class Control extends Module{
     getParams(tipo){
         if(tipo == 0){
             if(autor.value != '' && titulo.value != ''){
-                params = `asignatura=${asignatura.value}&ciclo=${ciclo.value}&autor=${autor.value}&titulo=${titulo.value}&genero=${genero.value}&facebook=${facebook.value}&instagram=${instagram.value}&proyectoWeb=${proyectoWeb.value}&dimensiones=${dimensiones.value}&fechaProduccion=${fechaProduccion.value}&tutor=${tutor.value}&descripcion=${descripcion.value}&youtube=${youtube.value}`;
+                params = `asignatura=${asignatura.value}&ciclo=${ciclo.value}&autor=${autor.value}&titulo=${titulo.value}&genero=${genero.value}&facebook=${facebook.value}&instagram=${instagram.value}&proyectoWeb=${proyectoWeb.value}&dimensiones=${dimensiones.value}&fechaProduccion=${fechaProduccion.value}&tutor=${tutor.value}&descripcion=${descripcion.value}&youtube=${youtube.value}&tecnica=${tecnica.value}`;
                 return params;
             }
             return ;
@@ -558,7 +561,7 @@ export default class Control extends Module{
         posX = document.getElementById('ejex').value;
         posY = document.getElementById('ejey').value;
         posZ = document.getElementById('ejez').value;
-        console.log(text);
+        // console.log(text);
         
         if(tipo.selectedIndex == 0){
             editable = "info"+infoButtons.options[infoButtons.selectedIndex].value;
@@ -567,10 +570,10 @@ export default class Control extends Module{
         }
 
         if( editable == "info" || editable == "nav" ){
-            console.log("Movio eje x 1");
+            // console.log("Movio eje x 1");
             return ;
         }else{
-            console.log("Movio eje x 2");
+            // console.log("Movio eje x 2");
             information.posX = posX;
             information.posY = posY;
             information.posZ = posZ;
@@ -586,11 +589,13 @@ export default class Control extends Module{
         ajaxRequest.onreadystatechange = function() {
             if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
                 info = JSON.parse(ajaxRequest.responseText);
-                console.log("info: ");
-                console.log(info);
+                // console.log("info: ");
+                // console.log(info);
                 salas.innerHTML = '';
+                todasSalas = {};
                 for(let i=0; i<info.length; i++){
                     // console.log(info[i]);
+                    todasSalas[`${info[i].idSala}`] = {temaCuratorial: info[i].temaCuratorial } ;
                     $( "#salas" ).append( `<option value="${info[i].idSala}"  data-foto="${info[i].nombreImgFondo}" >${info[i].temaCuratorial}</option>` );
                 }
 
@@ -608,11 +613,11 @@ export default class Control extends Module{
         ajaxRequest.onreadystatechange = function() {
             if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
                 info = JSON.parse(ajaxRequest.responseText);
-                console.log("info: ");
-                console.log(info);
+                // console.log("info: ");
+                // console.log(info);
                 museos.innerHTML = '';
                 for(let i=0; i<info.length; i++){
-                    console.log(`<option value="${info[i].idMuseo}">${info[i].nombreMuseo}</option>`);
+                    // console.log(`<option value="${info[i].idMuseo}">${info[i].nombreMuseo}</option>`);
                     $( "#museos" ).append( `<option value="${info[i].idMuseo}">${info[i].nombreMuseo}</option>` );
                 }
 
@@ -623,8 +628,8 @@ export default class Control extends Module{
         ajaxRequest.send(null);
 
         museoSeleccionado = museos.options[museos.selectedIndex];
-        console.log("Heyoo: ");
-        console.log(museoSeleccionado.value);
+        // console.log("Heyoo: ");
+        // console.log(museoSeleccionado.value);
 
         
         this.fillSalas(museoSeleccionado.value);
@@ -638,9 +643,9 @@ export default class Control extends Module{
         this.fillEnlaceLink(salaId);
         this.fillCoordinates();
 
-        console.log("\n\nHEYYYYYYYYYYY AQUIIIIIIIIII2: ");
-        console.log(informationLinks);
-        console.log(enlaceLinks);
+        // console.log("\n\nHEYYYYYYYYYYY AQUIIIIIIIIII2: ");
+        // console.log(informationLinks);
+        // console.log(enlaceLinks);
         
 
         information ={};
@@ -650,10 +655,10 @@ export default class Control extends Module{
         information.informationLinks = informationLinks;
         information.enlaceLinks = enlaceLinks;
 
-        console.log(information);
+        // console.log(information);
 
-        console.log("Heyoo 22: ");
-        console.log(salaURL);
+        // console.log("Heyoo 22: ");
+        // console.log(salaURL);
         window.dispatchEvent(new Event('cambioAmbiente'));
     }
 
@@ -670,8 +675,8 @@ export default class Control extends Module{
         information.informationLinks = informationLinks;
         information.enlaceLinks = enlaceLinks;
 
-        console.log("Heyoo 33: ");
-        console.log(salaURL);
+        // console.log("Heyoo 33: ");
+        // console.log(salaURL);
         window.dispatchEvent(new Event('cambioAmbiente'));
     }
 
@@ -696,8 +701,8 @@ export default class Control extends Module{
                     
                 }
               }
-            //   console.log("informationLinks: ");
-            //   console.log(informationLinks);
+              console.log("informationLinks: ");
+              console.log(informationLinks);
               
             }else if(ajaxRequest.status == 401){
                 this.sessionExpired();
@@ -717,12 +722,14 @@ export default class Control extends Module{
                 if(enlaceLinks.length==0){
                     $( "#navButtons" ).append( `<option value="">Vacio</option>` );
                 }else{
-                    console.log(enlaceLinks);
+                    // console.log(enlaceLinks);
+                    // console.log("HOLAAAA JAJASJJASFJDASJF: ");
+                    // console.log(todasSalas);
                     for(let i=0; i<enlaceLinks.length; i++){
                         if(enlaceLinks[i].idSalaDestino == "" || enlaceLinks[i].idSalaDestino == null ){
                             $( "#navButtons" ).append( `<option value="${enlaceLinks[i].idEnlace}" data-destino="" data-x="${enlaceLinks[i].posXIcono}" data-y="${enlaceLinks[i].posYIcono}" data-z="${enlaceLinks[i].posZIcono}">Enlace a sala no definida</option>` );
                         }else{
-                            $( "#navButtons" ).append( `<option value="${enlaceLinks[i].idEnlace}" data-destino="${enlaceLinks[i].idSalaDestino}" data-x="${enlaceLinks[i].posXIcono}" data-y="${enlaceLinks[i].posYIcono}" data-z="${enlaceLinks[i].posZIcono}">Enlace a sala ${enlaceLinks[i].idSalaDestino}</option>` );
+                            $( "#navButtons" ).append( `<option value="${enlaceLinks[i].idEnlace}" data-destino="${enlaceLinks[i].idSalaDestino}" data-x="${enlaceLinks[i].posXIcono}" data-y="${enlaceLinks[i].posYIcono}" data-z="${enlaceLinks[i].posZIcono}">Enlace a sala ${enlaceLinks[i].idSalaDestino}: ${todasSalas[`${enlaceLinks[i].idSalaDestino}`].temaCuratorial}</option>` );
                         }
                         
                     }
@@ -765,6 +772,7 @@ export default class Control extends Module{
         fechaProduccion.value = info.fechaProduccion;
         tutor.value = info.tutor;
         descripcion.value = info.descripcion;
+        tecnica.value  = info.tecnica;
         // imagenes.value = info.imagenes;
         imagenesUpload.value = null;
         objeto3DUpload.value = null;
@@ -778,8 +786,8 @@ export default class Control extends Module{
             for(let i=0; i<separatedImages.length; i++){
                 $( "#allImagenes" ).append( `<button type="button" class="btn btn-outline-info" id="button${i}" value="${separatedImages[i]}">Show ${separatedImages[i]}</button>` );
                 document.getElementById(`button${i}`).addEventListener('click', (e) => {
-                    console.log(e.target);
-                    console.log(e.target.value);
+                    // console.log(e.target);
+                    // console.log(e.target.value);
                     showingImage.setAttribute('src', `${link}/static_assets/${e.target.value}`);
                     showingImage.hidden = false;
                 });
