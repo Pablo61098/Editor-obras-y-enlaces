@@ -9,9 +9,13 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
   
   **Hacer fork a este repositorio**  
   **Correr:**  
+    ```bash
      -$ npm install
+    ```
   **Para ajustar la altura del componente se recomienda insertar esta linea:**  
+  ```javascript
       parent.style.position = 'static';  
+  ```
   **por la linea número 144 del archivo que se puede encontrar en:**  
       ./node_modules/react-360-web/js/ReactInstance.js  
   **Adeḿas se debe reemplazar la línea 150 de este mismo archivo por la línea:**  
