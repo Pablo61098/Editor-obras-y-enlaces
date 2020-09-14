@@ -222,7 +222,7 @@ export default class Control extends Module{
                 ajaxRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 ajaxRequest.onreadystatechange = () => {
                     if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
-                        alert(ajaxRequest.responseText);
+                        // alert(ajaxRequest.responseText);
                         this.fillInformationLinks(salaId);
                         infoButtons.selectedIndex = infoButtons.options.length-1;
                         this.fillCoordinates();
