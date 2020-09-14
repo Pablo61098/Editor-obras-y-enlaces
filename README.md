@@ -33,22 +33,22 @@ Editor de obras y enlaces de la aplicacion Museo Virtual para la Universidad de 
       indexEnlaces.ejs          ----> /views/  
     **Como paso final debemos reemplazar el conjunto de líneas [1-22] del archivo indexEnlaces.ejs por el siguiente conjunto de líneas.**  
     ```html
-        > <html>
-        > <link>
-          > <title>manageLinks</title>
-          > <style>body { margin: 0; }</style>
-          > <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-          > <meta name="robots" content="noindex,nofollow">
-          > <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
-          > <script src="/javascripts/jquery-3.5.1.slim.min.js"></script>
-          > <script src="/javascripts/popper.min.js"></script>
-          > <script src="/javascripts/bootstrap.min.js"></script>
-          > <link rel="stylesheet" href="/stylesheets/obrasEditor.styles.css"/>
-        > </head>
+         <html>
+         <head>
+           <title>manageLinks</title>
+           <style>body { margin: 0; }</style>
+           <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+           <meta name="robots" content="noindex,nofollow">
+           <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+           <script src="/javascripts/jquery-3.5.1.slim.min.js"></script>
+           <script src="/javascripts/popper.min.js"></script>
+           <script src="/javascripts/bootstrap.min.js"></script>
+           <link rel="stylesheet" href="/stylesheets/obrasEditor.styles.css"/>
+         </head>
 
-        > <body>
+         <body>
 
-          > <%- include('navbar.ejs') %>
+           <%- include('navbar.ejs') %>
     ```
     
     **Se corre el proyecto final, donde se puede visitar a este editor en la direccion /obras**  
